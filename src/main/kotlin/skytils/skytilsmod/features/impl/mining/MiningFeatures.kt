@@ -365,7 +365,9 @@ class MiningFeatures {
         if ((Skytils.config.crystalHollowWaypoints || Skytils.config.crystalHollowMapPlaces) && SBInfo.mode == SkyblockIsland.CrystalHollows.mode
             && deadCount == 0 && mc.thePlayer != null
         ) {
-            CrystalHollowsMap.Locations.cleanNameToLocation[SBInfo.location]?.loc?.set()
+            if (!CrystalHollowsMap.Locations[CrystalHollowsMap.Locations.cleanNameToLocation[SBInfo.location]].loc.exists()) {
+                 CrystalHollowsMap.Locations.cleanNameToLocation[SBInfo.location]?.loc?.set()
+            }
         } else if (deadCount > 0)
             deadCount--
     }
